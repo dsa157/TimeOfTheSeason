@@ -2,12 +2,12 @@ function getFooter() {
 
     var tmpl = `
     <div class="footer" data-role="controlgroup" data-type="horizontal">
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-home"     >{$Home}}</a>
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-search"   >Search</a>
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-calendar" >Calendar</a>
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-location" >Map</a>
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-check"    >Plan</a>
-    <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-user"     >Profile</a>
+    <a href="/" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-home"     >{$Home}}</a>
+    <a href="/search.html" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-search"   >Search</a>
+    <a href="/calendar.html" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-calendar" >Calendar</a>
+    <a href="/map.html" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-location" >Map</a>
+    <a href="/planner.html" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-check"    >Plan</a>
+    <a href="/profile.html" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-notext ui-icon-user"     >Profile</a>
 </div>  
 `;
     
@@ -18,9 +18,9 @@ function getFooter() {
     }).appendTo("#myFooter");
 }
 
-function getTitle() {
+function getTitle(page) {
     var tmpl = "My Title: ${Title}";
-    var data = { "Title" : "Time of the Season" };
+    var data = { "Title" : "Time of the Season: " + page };
     $.template("titleTmpl", tmpl);
     $.tmpl("titleTmpl", data).appendTo( "#myContent" );
 }
