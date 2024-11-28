@@ -3,23 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seasonal Events</title>
+  <title>Time of the Season</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Main Container -->
   <div id="app">
     <!-- Header -->
     <header class="header">
-      <h1>Seasonal Events</h1>
+      <h1>Time of the Season</h1>
     </header>
 
     <!-- Navigation Tabs -->
     <nav class="tabs">
-      <button class="tab active" onclick="showTab('calendar')">Calendar</button>
-      <button class="tab" onclick="showTab('list')">List View</button>
-      <button class="tab" onclick="showTab('map')">Map View</button>
-      <button class="tab" onclick="showTab('profile')">Profile</button>
+      <button class="tab active" onclick="showTab('calendar')">
+        <i class="fas fa-calendar-alt"></i>
+      </button>
+      <button class="tab" onclick="showTab('list')">
+        <i class="fas fa-list"></i>
+      </button>
+      <button class="tab" onclick="showTab('map')">
+        <i class="fas fa-map-marker-alt"></i>
+      </button>
+      <button class="tab" onclick="showTab('profile')">
+        <i class="fas fa-user"></i>
+      </button>
     </nav>
 
     <!-- Content Sections -->
@@ -42,17 +51,24 @@
             <span></span><span></span><span></span><span></span><span></span>
           </div>
         </div>
-        <!-- Additional categories can be added here -->
       </section>
 
       <!-- List View -->
       <section id="list" class="tab-content">
         <h2>List View</h2>
-        <input type="text" placeholder="Search events..." class="search-bar">
-        <ul class="event-list">
+        <input 
+          type="text" 
+          placeholder="Search events..." 
+          class="search-bar" 
+          id="searchBar" 
+          onkeyup="filterList()"
+        >
+        <ul id="eventList" class="event-list">
           <li>Skiing at Snowbird, Utah</li>
           <li>Diving in Komodo Islands</li>
-          <!-- Add more events dynamically -->
+          <li>Fall colors in Vermont</li>
+          <li>Music Festival in Glastonbury</li>
+          <li>Spring Cherry Blossom Viewing in Japan</li>
         </ul>
       </section>
 

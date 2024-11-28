@@ -12,3 +12,16 @@ function showTab(tabId) {
   document.getElementById(tabId).classList.add('active');
   event.target.classList.add('active');
 }
+
+function filterList() {
+  const searchBar = document.getElementById('searchBar');
+  const filter = searchBar.value.toLowerCase();
+  const eventList = document.getElementById('eventList');
+  const items = eventList.getElementsByTagName('li');
+
+  // Loop through all list items
+  Array.from(items).forEach(item => {
+    const text = item.textContent || item.innerText;
+    item.style.display = text.toLowerCase().includes(filter) ? '' : 'none';
+  });
+}

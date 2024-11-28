@@ -30,6 +30,10 @@ body {
   outline: none;
 }
 
+.tab i {
+  font-size: 1.5rem;
+}
+
 .tab.active {
   background: #007BFF;
   color: white;
