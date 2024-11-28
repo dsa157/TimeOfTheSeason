@@ -1,0 +1,4 @@
+Skiing|Snowbird, Utah|Dec,Jan,Feb,Mar|World-class skiing with breathtaking mountain views.
+Diving|Komodo Islands, Indonesia|Apr,May,Jun,Jul,Aug|Home to vibrant coral reefs and the famous Komodo dragon.
+Fall Colors|Vermont, USA|Sep,Oct|The quintessential New England fall experience.
+Fall Colors|Kyoto, Japan|Nov|A magical city with vibrant autumn colors and temples.

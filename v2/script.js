@@ -41,8 +41,7 @@ function parseEventData(data) {
   populateListView(groupedEvents);
 }
 
-// Populate the calendar view
-function populateCalendarView(groupedEvents) {
+function populateCalendarView(groupedEvents, filterText = "") {
   const calendarContainer = document.getElementById("calendarContainer");
   calendarContainer.innerHTML = ""; // Clear existing content
 
@@ -66,41 +65,53 @@ function populateCalendarView(groupedEvents) {
 
   calendarContainer.appendChild(headerRow);
 
-  // Add grouped data rows
+  // Add filtered rows
   Object.keys(groupedEvents).forEach(category => {
     groupedEvents[category].forEach(entry => {
-      const row = document.createElement("div");
-      row.classList.add("calendar-row");
+      if (
+        !filterText ||
+        entry.category.toLowerCase().includes(filterText) ||
+        entry.event.toLowerCase().includes(filterText) ||
+        entry.description.toLowerCase().includes(filterText)
+      ) {
+        const row = document.createElement("div");
+        row.classList.add("calendar-row");
 
-      // Add event name
-      const eventName = document.createElement("div");
-      eventName.classList.add("event-name");
-      eventName.textContent = `${entry.category}: ${entry.event}`;
-      row.appendChild(eventName);
+        // Add event name
+        const eventName = document.createElement("div");
+        eventName.classList.add("event-name");
+        eventName.textContent = `${entry.category}: ${entry.event}`;
+        row.appendChild(eventName);
 
-      // Add month dots only for active months
-      "JanFebMarAprMayJunJulAugSepOctNovDec".match(/.{3}/g).forEach(month => {
-        const dotCell = document.createElement("div");
-        dotCell.classList.add("dot-cell");
+        // Add month cells
+        "JanFebMarAprMayJunJulAugSepOctNovDec".match(/.{3}/g).forEach(month => {
+          const dotCell = document.createElement("div");
+          dotCell.classList.add("dot-cell");
 
-        // Only add dot if the event occurs in this month
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (entry.months.includes(month)) {
-          dot.classList.add("active");
-        } else {
-          dot.classList.remove("active"); // Ensure inactive dots are not added
-        }
-        dotCell.appendChild(dot);
-        row.appendChild(dotCell);
-      });
+          // Only add an active dot if the event occurs in this month
+          if (entry.months.includes(month)) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot", "active");
+            dotCell.appendChild(dot);
+          }
 
-      calendarContainer.appendChild(row);
+          row.appendChild(dotCell);
+        });
+
+        calendarContainer.appendChild(row);
+      }
     });
   });
 }
 
-// Populate the list view
+// Filter calendar view
+function filterCalendar() {
+  const searchBar = document.getElementById("calendarSearchBar");
+  const filterText = searchBar.value.toLowerCase();
+  populateCalendarView(groupedEvents, filterText); // Filter based on search input
+}
+
+
 // Populate the list view
 function populateListView(groupedEvents) {
   const listContainer = document.getElementById("listContainer");

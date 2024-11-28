@@ -23,6 +23,16 @@
       <!-- Calendar View -->
       <section id="calendar" class="tab-content">
         <h2>Calendar View</h2>
+        <div class="search-container">
+          <input 
+            type="text" 
+            placeholder="Search events..." 
+            class="search-bar" 
+            id="calendarSearchBar" 
+            onkeyup="filterCalendar()"
+          >
+          <i class="fas fa-times clear-filter-icon" onclick="clearFilter()"></i>
+        </div>
         <div id="calendarContainer" class="calendar-container"></div>
       </section>
 
