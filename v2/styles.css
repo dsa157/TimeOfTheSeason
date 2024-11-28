@@ -99,6 +99,36 @@ nav.tabs {
 }
 
 /* List View */
+.list-container {
+  margin-top: 1rem;
+}
+
+.list-category {
+  margin-bottom: 1rem;
+}
+
+.list-category h3 {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  margin: 0;
+  font-weight: bold;
+}
+
+.list-category h3:hover {
+  background-color: #ddd;
+}
+
+.list-items {
+  display: none;
+  padding-left: 20px;
+}
+
+.list-items.active {
+  display: block;
+}
+
 .event-list {
   list-style-type: none;
   padding: 0;

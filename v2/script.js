@@ -25,16 +25,24 @@ function parseEventData(data) {
     return { category, event, months: months.split(","), description };
   });
 
-  // Check the parsed event data
-  console.log("Parsed event data:");
-  console.log(eventData);
+  // Group events by category
+  const groupedEvents = eventData.reduce((acc, entry) => {
+    if (!acc[entry.category]) {
+      acc[entry.category] = [];
+    }
+    acc[entry.category].push(entry);
+    return acc;
+  }, {});
 
-  populateCalendarView();
-  populateListView();
+  console.log("Grouped event data:");
+  console.log(groupedEvents);
+
+  populateCalendarView(groupedEvents);
+  populateListView(groupedEvents);
 }
 
 // Populate the calendar view
-function populateCalendarView() {
+function populateCalendarView(groupedEvents) {
   const calendarContainer = document.getElementById("calendarContainer");
   calendarContainer.innerHTML = ""; // Clear existing content
 
@@ -58,53 +66,88 @@ function populateCalendarView() {
 
   calendarContainer.appendChild(headerRow);
 
-  // Add data rows
-  eventData.forEach(entry => {
-    const row = document.createElement("div");
-    row.classList.add("calendar-row");
+  // Add grouped data rows
+  Object.keys(groupedEvents).forEach(category => {
+    groupedEvents[category].forEach(entry => {
+      const row = document.createElement("div");
+      row.classList.add("calendar-row");
 
-    // Add event name
-    const eventName = document.createElement("div");
-    eventName.classList.add("event-name");
-    eventName.textContent = `${entry.category}: ${entry.event}`;
-    row.appendChild(eventName);
+      // Add event name
+      const eventName = document.createElement("div");
+      eventName.classList.add("event-name");
+      eventName.textContent = `${entry.category}: ${entry.event}`;
+      row.appendChild(eventName);
 
-    // Add month dots
-    "JanFebMarAprMayJunJulAugSepOctNovDec".match(/.{3}/g).forEach(month => {
-      const dotCell = document.createElement("div");
-      dotCell.classList.add("dot-cell");
+      // Add month dots only for active months
+      "JanFebMarAprMayJunJulAugSepOctNovDec".match(/.{3}/g).forEach(month => {
+        const dotCell = document.createElement("div");
+        dotCell.classList.add("dot-cell");
 
-      // Add dot if the event occurs in this month
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      if (entry.months.includes(month)) {
-        dot.classList.add("active");
-      }
-      dotCell.appendChild(dot);
-      row.appendChild(dotCell);
+        // Only add dot if the event occurs in this month
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (entry.months.includes(month)) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active"); // Ensure inactive dots are not added
+        }
+        dotCell.appendChild(dot);
+        row.appendChild(dotCell);
+      });
+
+      calendarContainer.appendChild(row);
     });
-
-    calendarContainer.appendChild(row);
   });
 }
 
 // Populate the list view
-function populateListView() {
-  const list = document.getElementById("eventList");
-  list.innerHTML = ""; // Clear existing content
+function populateListView(groupedEvents) {
+  const listContainer = document.getElementById("listContainer");
+  listContainer.innerHTML = ""; // Clear existing content
 
-  eventData.forEach(entry => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `<strong>${entry.category}:</strong> ${entry.event} <br> <em>${entry.description}</em>`;
-    list.appendChild(listItem);
+  // Iterate through grouped events and create collapsible categories
+  Object.keys(groupedEvents).forEach(category => {
+    const categorySection = document.createElement("div");
+    categorySection.classList.add("list-category");
+
+    // Category title (clickable)
+    const categoryTitle = document.createElement("h3");
+    categoryTitle.textContent = category;
+    categoryTitle.onclick = () => toggleCategory(category);
+    categorySection.appendChild(categoryTitle);
+
+    // Event list for this category
+    const eventList = document.createElement("div");
+    eventList.classList.add("list-items");
+    eventList.setAttribute("id", `${category}-list`);
+
+    const eventListUl = document.createElement("ul");
+    eventListUl.classList.add("event-list");
+
+    groupedEvents[category].forEach(entry => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>${entry.event}</strong><br><em>${entry.description}</em>`;
+      eventListUl.appendChild(listItem);
+    });
+
+    eventList.appendChild(eventListUl);
+    categorySection.appendChild(eventList);
+
+    listContainer.appendChild(categorySection);
   });
+}
+
+// Toggle visibility of event list in each category
+function toggleCategory(category) {
+  const categoryList = document.getElementById(`${category}-list`);
+  categoryList.classList.toggle("active");
 }
 
 // Filter list view
 function filterList() {
   const searchBar = document.getElementById("searchBar");
   const filter = searchBar.value.toLowerCase();
-  const items = document.querySelectorAll("#eventList li");
+  const items = document.querySelectorAll(".event-list li");
 
   items.forEach(item => {
     const text = item.textContent || item.innerText;
