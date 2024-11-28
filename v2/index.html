@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seasonal Events</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main Container -->
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <h1>Seasonal Events</h1>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+      <button class="tab active" onclick="showTab('calendar')">Calendar</button>
+      <button class="tab" onclick="showTab('list')">List View</button>
+      <button class="tab" onclick="showTab('map')">Map View</button>
+      <button class="tab" onclick="showTab('profile')">Profile</button>
+    </nav>
+
+    <!-- Content Sections -->
+    <main>
+      <!-- Calendar View -->
+      <section id="calendar" class="tab-content active">
+        <div class="month-row">
+          <span>J</span><span>F</span><span>M</span><span>A</span>
+          <span>M</span><span>J</span><span>J</span><span>A</span>
+          <span>S</span><span>O</span><span>N</span><span>D</span>
+        </div>
+        <div class="category-row">
+          <div class="category-name">Skiing</div>
+          <div class="month-dots">
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <!-- Additional categories can be added here -->
+      </section>
+
+      <!-- List View -->
+      <section id="list" class="tab-content">
+        <h2>List View</h2>
+        <input type="text" placeholder="Search events..." class="search-bar">
+        <ul class="event-list">
+          <li>Skiing at Snowbird, Utah</li>
+          <li>Diving in Komodo Islands</li>
+          <!-- Add more events dynamically -->
+        </ul>
+      </section>
+
+      <!-- Map View -->
+      <section id="map" class="tab-content">
+        <h2>Map View</h2>
+        <div id="map-container">[Map Placeholder]</div>
+      </section>
+
+      <!-- User Profile -->
+      <section id="profile" class="tab-content">
+        <h2>User Profile</h2>
+        <button>Add Event</button>
+        <button>Edit Event</button>
+        <button>Delete Event</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
