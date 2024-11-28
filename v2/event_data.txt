@@ -1,0 +1,25 @@
+Skiing|Snowbird, Utah|Dec,Jan,Feb,Mar|World-class skiing with breathtaking mountain views.
+Skiing|Aspen, Colorado|Dec,Jan,Feb,Mar|Luxury skiing experience in the Rocky Mountains.
+Skiing|Whistler, Canada|Nov,Dec,Jan,Feb|Largest ski resort in North America.
+Skiing|Chamonix, France|Dec,Jan,Feb,Mar|Iconic European skiing destination near Mont Blanc.
+Skiing|Niseko, Japan|Jan,Feb,Mar|Renowned for its light powder snow and hot springs.
+Diving|Komodo Islands, Indonesia|Apr,May,Jun,Jul,Aug|Home to vibrant coral reefs and the famous Komodo dragon.
+Diving|Great Barrier Reef, Australia|Jun,Jul,Aug,Sep|The world’s largest coral reef system.
+Diving|Belize Barrier Reef|Feb,Mar,Apr,May|A UNESCO World Heritage Site with diverse marine life.
+Diving|Sipadan, Malaysia|Jul,Aug,Sep,Oct|One of the world’s top dive destinations.
+Diving|Red Sea, Egypt|Mar,Apr,May,Oct,Nov|Famous for its clear waters and rich underwater ecosystems.
+Fall Colors|Vermont, USA|Sep,Oct|The quintessential New England fall experience.
+Fall Colors|Kyoto, Japan|Nov|A magical city with vibrant autumn colors and temples.
+Fall Colors|Bavaria, Germany|Oct|Picturesque fall foliage in the heart of Europe.
+Fall Colors|Quebec, Canada|Sep,Oct|Stunning autumn leaves in the French-speaking province.
+Fall Colors|South Korea|Oct,Nov|Charming autumn views in national parks and cities.
+Music Festivals|Glastonbury, UK|Jun|Iconic music festival featuring global artists.
+Music Festivals|Coachella, USA|Apr|Popular desert music festival in California.
+Music Festivals|Tomorrowland, Belgium|Jul|World-famous electronic dance music festival.
+Music Festivals|Burning Man, USA|Aug,Sep|A unique cultural experience in the Nevada desert.
+Music Festivals|Fuji Rock, Japan|Jul|A top music festival set in the mountains of Japan.
+Cherry Blossoms|Tokyo, Japan|Mar,Apr|Spectacular sakura season in the heart of Japan.
+Cherry Blossoms|Washington DC, USA|Mar,Apr|Historic cherry blossoms gifted by Japan.
+Cherry Blossoms|Seoul, South Korea|Apr|Beautiful blossoms in parks and palaces.
+Cherry Blossoms|Kyoto, Japan|Apr|Charming blossoms with traditional architecture.
+Cherry Blossoms|Paris, France|Apr|Romantic cherry blossoms in the city of love.

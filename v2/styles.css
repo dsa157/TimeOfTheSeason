@@ -1,111 +1,120 @@
-/* styles.css */
+/* Basic styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
 }
 
-.header {
-  background: #007BFF;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-}
-
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
-}
-
-.tab {
-  flex: 1;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 1rem;
+}
+
+header {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+nav.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.tab-button {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  margin: 0 5px;
   cursor: pointer;
-  background: #f1f1f1;
-  border: none;
-  outline: none;
 }
 
-.tab i {
-  font-size: 1.5rem;
-}
-
-.tab.active {
-  background: #007BFF;
-  color: white;
+.tab-button:hover {
+  background-color: #ddd;
 }
 
 .tab-content {
   display: none;
-  padding: 1rem;
 }
 
 .tab-content.active {
   display: block;
 }
 
-.month-row {
+/* Search Bar */
+.search-bar {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Calendar View Styling */
+.calendar-container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 1fr repeat(12, 1fr); /* 1 column for "Event", 12 for months */
+  gap: 0;
+  border: 1px solid #ddd;
+}
+
+.calendar-row {
+  display: contents;
+}
+
+.header-cell {
   text-align: center;
-  background: #eee;
   padding: 0.5rem;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  background-color: #eee;
 }
 
-.category-row {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  align-items: center;
+.event-name {
   padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.category-name {
+  border: 1px solid #ddd;
+  background-color: #f7f7f7;
   font-weight: bold;
 }
 
-.month-dots {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 5px;
+.dot-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
 }
 
 .dot {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #ccc;
+  background-color: #ccc;
 }
 
 .dot.active {
-  background: #007BFF;
+  background-color: #007BFF;
 }
 
-.search-bar {
-  width: 100%;
-  padding: 0.5rem;
-  margin: 1rem 0;
-  border: 1px solid #ddd;
-}
-
+/* List View */
 .event-list {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
 .event-list li {
   padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
 }
 
-#map-container {
-  height: 300px;
-  background: #ccc;
-  text-align: center;
-  line-height: 300px;
+.event-list strong {
+  font-size: 1.2rem;
+}
+
+.event-list em {
+  font-style: normal;
   color: #555;
 }

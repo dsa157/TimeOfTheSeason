@@ -5,52 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time of the Season</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://kit.fontawesome.com/ff2daa2382.js" crossorigin="anonymous"></script>  
+  <script src="https://kit.fontawesome.com/ff2daa2382.js"></script>
 </head>
 <body>
-  <!-- Main Container -->
-  <div id="app">
-    <!-- Header -->
-    <header class="header">
+  <div class="container">
+    <header>
       <h1>Time of the Season</h1>
+      <nav class="tabs">
+        <button class="tab-button" onclick="showTab('calendar')"><i class="fas fa-calendar-day"></i> Calendar</button>
+        <button class="tab-button" onclick="showTab('list')"><i class="fas fa-list"></i> List</button>
+        <button class="tab-button" onclick="showTab('profile')"><i class="fas fa-user"></i> Profile</button>
+        <button class="tab-button" onclick="showTab('addEvent')"><i class="fas fa-plus"></i> Add Event</button>
+      </nav>
     </header>
 
-    <!-- Navigation Tabs -->
-    <nav class="tabs">
-      <button class="tab active" onclick="showTab('calendar')">
-        <i class="fas fa-calendar-alt"></i>
-      </button>
-      <button class="tab" onclick="showTab('list')">
-        <i class="fas fa-list"></i>
-      </button>
-      <button class="tab" onclick="showTab('map')">
-        <i class="fas fa-map-marker-alt"></i>
-      </button>
-      <button class="tab" onclick="showTab('profile')">
-        <i class="fas fa-user"></i>
-      </button>
-    </nav>
-
-    <!-- Content Sections -->
     <main>
       <!-- Calendar View -->
-      <section id="calendar" class="tab-content active">
-        <div class="month-row">
-          <span>J</span><span>F</span><span>M</span><span>A</span>
-          <span>M</span><span>J</span><span>J</span><span>A</span>
-          <span>S</span><span>O</span><span>N</span><span>D</span>
-        </div>
-        <div class="category-row">
-          <div class="category-name">Skiing</div>
-          <div class="month-dots">
-            <span class="dot active"></span>
-            <span class="dot active"></span>
-            <span class="dot active"></span>
-            <span class="dot active"></span>
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-        </div>
+      <section id="calendar" class="tab-content">
+        <h2>Calendar View</h2>
+        <div id="calendarContainer" class="calendar-container"></div>
       </section>
 
       <!-- List View -->
@@ -63,27 +36,19 @@
           id="searchBar" 
           onkeyup="filterList()"
         >
-        <ul id="eventList" class="event-list">
-          <li>Skiing at Snowbird, Utah</li>
-          <li>Diving in Komodo Islands</li>
-          <li>Fall colors in Vermont</li>
-          <li>Music Festival in Glastonbury</li>
-          <li>Spring Cherry Blossom Viewing in Japan</li>
-        </ul>
+        <ul id="eventList" class="event-list"></ul>
       </section>
 
-      <!-- Map View -->
-      <section id="map" class="tab-content">
-        <h2>Map View</h2>
-        <div id="map-container">[Map Placeholder]</div>
-      </section>
-
-      <!-- User Profile -->
+      <!-- Profile (placeholder for now) -->
       <section id="profile" class="tab-content">
         <h2>User Profile</h2>
-        <button>Add Event</button>
-        <button>Edit Event</button>
-        <button>Delete Event</button>
+        <p>Profile information goes here.</p>
+      </section>
+
+      <!-- Add Event (placeholder for now) -->
+      <section id="addEvent" class="tab-content">
+        <h2>Add Event</h2>
+        <p>Form to add new events goes here.</p>
       </section>
     </main>
   </div>
