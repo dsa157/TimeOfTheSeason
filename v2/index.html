@@ -29,14 +29,15 @@
       <!-- List View -->
       <section id="list" class="tab-content">
         <h2>List View</h2>
-        <input 
-          type="text" 
-          placeholder="Search events..." 
-          class="search-bar" 
-          id="searchBar" 
-          onkeyup="filterList()"
-        >
-        <div id="listContainer" class="list-container"></div>
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="searchBar" 
+            placeholder="Search events..." 
+            onkeyup="filterList()"
+          >
+          <i class="fas fa-times clear-filter-icon" onclick="clearFilter()"></i>
+        </div>        <div id="listContainer" class="list-container"></div>
       </section>
 
       <!-- Profile (placeholder for now) -->

@@ -101,6 +101,7 @@ function populateCalendarView(groupedEvents) {
 }
 
 // Populate the list view
+// Populate the list view
 function populateListView(groupedEvents) {
   const listContainer = document.getElementById("listContainer");
   listContainer.innerHTML = ""; // Clear existing content
@@ -110,7 +111,7 @@ function populateListView(groupedEvents) {
     const categorySection = document.createElement("div");
     categorySection.classList.add("list-category");
 
-    // Category title (clickable)
+    // Category title
     const categoryTitle = document.createElement("h3");
     categoryTitle.textContent = category;
     categoryTitle.onclick = () => toggleCategory(category);
@@ -118,7 +119,7 @@ function populateListView(groupedEvents) {
 
     // Event list for this category
     const eventList = document.createElement("div");
-    eventList.classList.add("list-items");
+    eventList.classList.add("list-items", "active"); // Add 'active' by default
     eventList.setAttribute("id", `${category}-list`);
 
     const eventListUl = document.createElement("ul");
@@ -137,6 +138,7 @@ function populateListView(groupedEvents) {
   });
 }
 
+
 // Toggle visibility of event list in each category
 function toggleCategory(category) {
   const categoryList = document.getElementById(`${category}-list`);
@@ -148,11 +150,41 @@ function filterList() {
   const searchBar = document.getElementById("searchBar");
   const filter = searchBar.value.toLowerCase();
   const items = document.querySelectorAll(".event-list li");
+  let anyMatches = false;
 
   items.forEach(item => {
     const text = item.textContent || item.innerText;
-    item.style.display = text.toLowerCase().includes(filter) ? "" : "none";
+    const parentCategory = item.closest(".list-category");
+    const categoryItems = parentCategory.querySelectorAll(".event-list li");
+
+    // Show or hide items based on filter match
+    if (text.toLowerCase().includes(filter)) {
+      item.style.display = "";
+      anyMatches = true;
+    } else {
+      item.style.display = "none";
+    }
+
+    // Hide the category if no items are showing
+    const allHidden = Array.from(categoryItems).every(i => i.style.display === "none");
+    const categorySection = parentCategory.closest('.list-category');
+    if (allHidden) {
+      categorySection.style.display = "none";
+    } else {
+      categorySection.style.display = "block";
+    }
   });
+
+  // Update visibility of clear filter icon based on filter text
+  const clearIcon = document.getElementById("clearFilter");
+  clearIcon.style.display = filter ? "block" : "none";
+}
+
+// Clear the search filter
+function clearFilter() {
+  const searchBar = document.getElementById("searchBar");
+  searchBar.value = "";
+  filterList();  // Reapply filter to reset all visibility
 }
 
 // Show the active tab

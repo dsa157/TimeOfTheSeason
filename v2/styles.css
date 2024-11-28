@@ -46,11 +46,51 @@ nav.tabs {
   display: block;
 }
 
-/* Search Bar */
-.search-bar {
+/* Search Container */
+.search-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.search-container input {
   width: 100%;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding-right: 30px; /* Create space for the clear icon */
+  box-sizing: border-box;
+}
+
+.search-container .clear-filter-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1rem;
+  display: none; /* Initially hidden */
+}
+
+.search-container .clear-filter-icon:hover {
+  color: #007BFF; /* Optional: Change color on hover */
+}
+
+/* Show the clear icon only when there's input */
+.search-container input:valid + .clear-filter-icon,
+.search-container input:focus + .clear-filter-icon {
+  display: block;
+}
+
+.clear-filter-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: none; /* Initially hidden */
+}
+
+.clear-filter-icon:hover {
+  color: #007BFF; /* Optional: Change color on hover */
 }
 
 /* Calendar View Styling */
